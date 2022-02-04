@@ -1,0 +1,132 @@
+.category-page-grid{
+    display: grid;
+    flex-basis: 100%;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: start;
+}
+
+
+.search-section-padding{
+    padding: 0 16%
+}
+
+@media (max-width: 1200px) {
+    .search-section-padding{
+        padding: 0 7%
+    }
+}
+
+@media (max-width: 500px) {
+    .search-section-padding {
+        padding: 0 15px
+    }
+}
+
+.search-input-wrapper {
+    margin-top: 2em;
+    position: relative;
+    text-align: center;
+    width: 100%;
+    padding: 1em 2em
+}
+
+
+.als-search-v4-input-wrapper-with-border:after, .als-search-v4-input-wrapper-with-border:before {
+    opacity: 1
+}
+
+
+.als-search-v4-input-wrapper-cursor {
+    position: relative
+}
+
+
+
+
+.search-input-wrapper .als-search-v4-input-placeholder, .search-input-wrapper input {
+    text-align: center;
+    font-size: 2em;
+    display: block;
+    font-weight: normal;
+    letter-spacing: 1px;
+    width: 100%;
+    background: #6b6b6b;
+    outline: none;
+    color: #fff;
+    border: none;
+    border-radius: 2px;
+    text-transform: lowercase
+}
+
+.search-input-wrapper .als-search-v4-input-placeholder.with-pseudo-cursor, .search-input-wrapper input.with-pseudo-cursor {
+    caret-color: #ffffff;
+    text-shadow: 0 0 0 #fff
+}
+
+.search-input-wrapper .als-search-v4-input-placeholder {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: .2;
+    pointer-events: none;
+    text-transform: none
+}
+.search-input-wrapper{
+    opacity: 1;
+
+}
+
+@media (max-width: 752px) {
+    .search-input-wrapper .als-search-v4-input-placeholder {
+        font-size: 1.5em;
+        padding-top: .2em
+    }
+}
+
+/*.als-search-v4-input-wrapper .pseudo-cursor {*/
+/*    width: 2px;*/
+/*    background: #fff;*/
+/*    position: absolute;*/
+/*    z-index: 4;*/
+/*    left: 0;*/
+/*    bottom: 0;*/
+/*    top: 0;*/
+/*    margin-left: -1px*/
+/*}*/
+
+/*.als-search-v4-input-wrapper .pseudo-cursor.blink {*/
+/*    -webkit-animation: searshv4Cursor 1s steps(1) infinite;*/
+/*    animation: searshv4Cursor 1s steps(1) infinite*/
+/*}*/
+
+/*.als-search-v4-input-wrapper .pseudo-cursor.hidded {*/
+/*    visibility: hidden*/
+/*}*/
+
+@keyframes searshv4Cursor {
+    0% {
+        opacity: 1
+    }
+    50% {
+        opacity: 0
+    }
+}
+
+.with-pseudo-cursor{
+    z-index: 10;
+}
+
+@media screen and (max-width: 752px) {
+    .category-page-grid{
+        flex-basis: 100%;
+        max-width: 100%;
+        grid-template-columns: 1fr;
+    }
+    .main{
+        margin-top: 4.5rem;
+    }
+
+
+}
+
+

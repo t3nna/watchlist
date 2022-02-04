@@ -1,0 +1,157 @@
+
+.navbar-enter {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-enter-title-container {
+    flex-basis: 50%;
+
+}
+
+.navbar-enter-title-container h1 {
+    font-size: 4rem;
+    font-weight: 500;
+    letter-spacing: .03em;
+}
+
+.navbar-enter-container {
+    display: flex;
+    align-items: center;
+    flex-basis: 50%;
+    justify-content: flex-end;
+
+}
+
+.navbar-enter-button {
+    width: 200px;
+    height: 70px;
+    border: 2px solid black;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 1rem;
+}
+
+
+.navbar-enter-button h2 {
+    font-size: 2.25rem;
+    margin: 0 auto;
+}
+
+.navbar-enter-container .svg-icon {
+    margin-left: 0.25rem;
+
+}
+
+.svg-icon svg {
+    width: 32px;
+    height: 32px;
+}
+
+
+/* main of the page*/
+.page-caption h2 {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.page-caption .navbar-enter-button {
+    position: absolute;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+}
+
+.page-caption .navbar-enter-button {
+    font-size: 2.5rem;
+}
+
+
+.page-caption h2 {
+    font-size: 2rem;
+    font-weight: normal;
+}
+
+
+/*Image slide*/
+.enter-page-image-slide{
+    height: 100%;
+    width: 100%;
+
+
+}
+
+@keyframes animate {
+
+}
+.main-container{
+    position: relative;
+}
+
+.changing-images{
+    position: absolute;
+    z-index: -5;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+
+
+
+/*Responsive*/
+@media screen and (max-width: 750px) {
+    .navbar-enter .navbar-enter-button {
+        display: none;
+    }
+
+    .page-caption .navbar-enter-button {
+        display: flex;
+    }
+
+    .navbar-enter-title-container h1 {
+        font-size: 3rem;
+
+    }
+    .navbar-enter-title-container {
+        flex-basis: 90%;
+
+    }
+
+    .svg-icon svg {
+        width: 28px;
+        height: 28px;
+    }
+
+}
+
+@media screen and (max-width: 450px){
+    .navbar-enter-title-container h1 {
+        font-size: 2.5rem;
+
+    }
+    .navbar-enter-title-container {
+        flex-basis: 90%;
+
+    }
+    .page-caption h2 {
+        font-size: 1.5rem;
+    }
+    .page-caption h2 {
+        top: 82%;
+    }
+}

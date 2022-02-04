@@ -1,0 +1,36 @@
+.film-counter{
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.film-counter span{
+    color: coral;
+
+}
+
+
+.grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-top: 2rem;
+
+}
+
+@media screen and (max-width: 750px){
+    .grid{
+        padding: 0 1rem;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 550px){
+    .grid{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media screen and (max-width: 440px){
+    .grid{
+        grid-template-columns: 1fr;
+        padding: 0 3rem
+    }
+}
