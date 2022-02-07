@@ -32,6 +32,12 @@ export default function AppReducer(state, action){
                 ...state,
                 watched: state.watched.filter(item => item.id !== action.payload.id)
             }
+
+        case 'GET_DESC_ID':
+            return {
+                ...state,
+                description: action.payload
+            }
         default:
             return state
 

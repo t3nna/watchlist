@@ -8,6 +8,7 @@ import Watchlist from "../ContainerWatchlist/Watchlist/Watchlist";
 import Search from "../ContainerWatchlist/Search/Search";
 import Watched from "../ContainerWatchlist/Watched/Watched";
 import About from "../ContainerWatchlist/About/About";
+import FilmDesc from "../ContainerWatchlist/FilmDesc/FilmDesc";
 
 
 export default function Main() {
@@ -33,6 +34,12 @@ export default function Main() {
                 <Route path={'/about'} exact>
                         <Navbar/>
                         <About/>
+                    </Route>
+
+                    <Route path={'/film-desc'}>
+                        <Navbar/>
+                        <FilmDesc/>
+
                     </Route>
                 </Switch>
             </Router>

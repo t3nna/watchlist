@@ -1,3 +1,7 @@
+.main-container{
+    /*background-color: ;*/
+}
+
 
 .navbar-enter {
     width: 100%;
@@ -7,6 +11,7 @@
 
 .navbar-enter-title-container {
     flex-basis: 50%;
+    color: white;
 
 }
 
@@ -27,18 +32,21 @@
 .navbar-enter-button {
     width: 200px;
     height: 70px;
-    border: 2px solid black;
+    border: 2px solid white;
     border-radius: 2px;
     display: flex;
     align-items: center;
     justify-content: center;
+    color: white;
     margin-left: 1rem;
+    text-decoration: none;
 }
 
 
 .navbar-enter-button h2 {
     font-size: 2.25rem;
     margin: 0 auto;
+
 }
 
 .navbar-enter-container .svg-icon {
@@ -59,6 +67,7 @@
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
+    color: white;
 }
 
 .page-caption .navbar-enter-button {
@@ -95,7 +104,7 @@
 
 }
 .main-container{
-    position: relative;
+
 }
 
 .changing-images{

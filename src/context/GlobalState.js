@@ -5,7 +5,8 @@ const initialState = {
     watchlist: localStorage.getItem('watchlist')
         ? JSON.parse(localStorage.getItem('watchlist')) : [],
     watched: localStorage.getItem('watched')
-        ? JSON.parse(localStorage.getItem('watched')) : []
+        ? JSON.parse(localStorage.getItem('watched')) : [],
+    description: ''
 }
 
 export const FilmContext = React.createContext(initialState)
@@ -47,18 +48,24 @@ export function FilmProvider({children}) {
     const deleteFilmFromWatched = (film) =>{
         dispatch({type: 'DELETE_FILM_FROM_WATCHED', payload: film})
     }
+    // get Description Film ID
+    const getDescId = (film) =>{
+        dispatch({type: 'GET_DESC_ID', payload: film})
+    }
 
 
     return (
         <FilmContext.Provider value={{
             watchlist: state.watchlist,
             watched: state.watched,
+            description: state.description,
             addFilmToWatchlist,
             addFilmToWatched,
             toggleWatchlistToWatched,
             toggleWatchedToWatchlist,
             deleteFilmFromWatchlist,
             deleteFilmFromWatched,
+            getDescId
 
 
         }}>

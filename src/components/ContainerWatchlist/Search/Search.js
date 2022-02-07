@@ -1,16 +1,17 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import './Search.css'
 import FilmResult from "../FilmResult/FilmResult";
 
 export default function Search() {
     const [text, setText] = useState('')
     const [results, setResults] = useState([])
-    const Search = (e) => {
-        e.preventDefault()
+    const [fetchSwitch, setFetchSwitch] = useState(true)
 
-        setText(e.target.value)
-        fetch(`
-            https://api.themoviedb.org/3/search/movie?api_key=ace7abdadb0d05bb4604217adee8cfac&language=en-US&page=1&include_adult=false&query=${text}`)
+    useEffect(() =>{
+
+        fetch(  fetchSwitch ? `https://api.themoviedb.org/3/search/movie?api_key=ace7abdadb0d05bb4604217adee8cfac&language=en-US&page=1&include_adult=false&query=${text}`
+        : `https://api.themoviedb.org/3/search/tv?api_key=ace7abdadb0d05bb4604217adee8cfac&language=en-US&page=1&include_adult=false&query=${text}`
+        )
             .then(res => {
                 // return res.json()
                     if (res.ok) {
@@ -28,13 +29,32 @@ export default function Search() {
                 setResults(data.results)
             })
             .catch(err => console.log(err.message))
-    }
+
+
+    }, [text, fetchSwitch])
+
 
 
     return (
         <>
             <main className={'main'}>
                 <div className="container-fluid wrapper">
+                    <div className="switch-fetch-req">
+                        {/*<label className="switch">*/}
+                        {/*    <input type="checkbox"/>*/}
+                        {/*        <span className="slider round"></span>*/}
+                        {/*</label>*/}
+
+                        <button className={'search-switch'} style={fetchSwitch ? {backgroundColor: 'coral'} : {}} onClick={() => setFetchSwitch(true)}>
+                            Films
+                        </button>
+
+                        <button className={'search-switch'} style={!fetchSwitch ? {backgroundColor: 'coral'} : {} } onClick={() => setFetchSwitch(false)}>
+                            TV Shows
+                        </button>
+
+                    </div>
+
                     <section className="search-section-padding">
                         <div className="search-input-wrapper als-search-v4-input-wrapper-with-border">
                             <div className="als-search-v4-input-wrapper-cursor">
@@ -43,7 +63,7 @@ export default function Search() {
                                 </div>
                                 <form><input type={'text'} autoComplete="off"
                                              className="with-pseudo-cursor"
-                                             onChange={Search}
+                                             onChange={ event => setText(event.target.value)}
                                 />
                                     <div className="pseudo-cursor blink"></div>
                                 </form>
@@ -55,7 +75,7 @@ export default function Search() {
                     <div className="grid">
                         {
                             results.map((movie) =>(
-                                <FilmResult movie={movie} key={movie.id}/>
+                                <FilmResult movie={movie} key={movie.id} mediaType={fetchSwitch ? 'movie' : 'tv'}/>
                             ))
                         }
 

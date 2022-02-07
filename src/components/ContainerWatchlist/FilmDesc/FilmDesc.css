@@ -1,0 +1,26 @@
+.full-info-container{
+    font-family: Roboto, sans-serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+.full-info-container ul{
+    list-style: none;
+
+}
+
+.full-info-container li{
+    padding: .5rem 0;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.full-info-container li .full-info-label {
+    flex-basis: 20%;
+    font-weight: 700;
+
+}
+.full-info-value{
+    flex-basis: 80%;
+}
