@@ -38,6 +38,12 @@ export default function AppReducer(state, action){
                 ...state,
                 description: action.payload
             }
+        case 'SET_CURRENT_USER':
+            return {
+                ...state,
+                currentUser: action.payload
+
+            }
         default:
             return state
 

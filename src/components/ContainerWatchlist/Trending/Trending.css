@@ -1,0 +1,51 @@
+.trending-section{
+    /*background-color: #6b6b6b;*/
+    margin-top: 2rem;
+    border-radius: 2px;
+    display: grid;
+    gap: .5rem;
+    grid-template-rows: min-content;
+
+}
+
+.trending-section h1{
+    text-align: center;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+}
+
+
+.horizontal-scroll{
+    /*display: flex;*/
+    /*flex-wrap: nowrap;*/
+    /*overflow-x: auto;*/
+    /*margin: 10px;*/
+    /*-webkit-overflow-scrolling: touch;*/
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 29%;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+}
+
+.snaps-inline {
+    scroll-snap-type: inline mandatory;
+    /*scroll-padding-inline: 1rem;*/
+}
+.snaps-inline > * {
+    scroll-snap-align: start;
+}
+
+.horizontal-scroll > .film-container{
+    padding: 0 .4rem;
+}
+
+@media screen and (max-width: 750px){
+    .trending-section{
+        margin: 0 1rem;
+    }
+    .horizontal-scroll{
+        grid-auto-columns: 60%;
+    }
+}
+

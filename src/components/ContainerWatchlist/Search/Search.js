@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import './Search.css'
 import FilmResult from "../FilmResult/FilmResult";
+import Trending from "../Trending/Trending";
 
 export default function Search() {
     const [text, setText] = useState('')
@@ -29,6 +30,9 @@ export default function Search() {
                 setResults(data.results)
             })
             .catch(err => console.log(err.message))
+        if (text===''){
+            setResults([])
+        }
 
 
     }, [text, fetchSwitch])
@@ -59,7 +63,11 @@ export default function Search() {
                         <div className="search-input-wrapper als-search-v4-input-wrapper-with-border">
                             <div className="als-search-v4-input-wrapper-cursor">
                                 <div style={text.length !== 0 ? {display: 'none'} : {display: 'block'}}
-                                     className="als-search-v4-input-placeholder">Film search
+                                     className="als-search-v4-input-placeholder">
+                                    {
+                                        fetchSwitch? 'Film Search' : 'TV show Search'
+                                    }
+
                                 </div>
                                 <form><input type={'text'} autoComplete="off"
                                              className="with-pseudo-cursor"
@@ -83,6 +91,7 @@ export default function Search() {
                     </div>
                 </div>
             </main>
+            <Trending/>
 
         </>
     )

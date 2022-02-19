@@ -1,17 +1,14 @@
-.main-container{
-    /*background-color: ;*/
-}
 
 
 .navbar-enter {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    color: #fbfbff;
 }
 
 .navbar-enter-title-container {
     flex-basis: 50%;
-    color: white;
 
 }
 
@@ -32,12 +29,12 @@
 .navbar-enter-button {
     width: 200px;
     height: 70px;
-    border: 2px solid white;
+    border: 2px solid #fbfbff;
     border-radius: 2px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: #fbfbff;
     margin-left: 1rem;
     text-decoration: none;
 }
@@ -67,7 +64,7 @@
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
-    color: white;
+    color: #fbfbff;
 }
 
 .page-caption .navbar-enter-button {
@@ -109,7 +106,7 @@
 
 .changing-images{
     position: absolute;
-    z-index: -5;
+    z-index: -1;
     top: 0;
     left: 0;
     right: 0;

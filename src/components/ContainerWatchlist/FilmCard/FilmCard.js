@@ -9,6 +9,17 @@ export default function FilmCard({movie, type}) {
 
     const [description, setDescription] = useState(false)
 
+    // find date in req
+    const FilmDate = () => {
+        if (movie.release_date) {
+            return movie.release_date.substring(0, 4)
+        }
+        if (movie.first_air_date) {
+            return movie.first_air_date.substring(0, 4)
+        }
+        return '-'
+    }
+
     return (
         <>
             <div className={'film-container'}>
@@ -43,10 +54,14 @@ export default function FilmCard({movie, type}) {
                     </div>
                     <div className="film-text-container">
                         <div className="film-header-wrapper">
-                            <h3>{movie.title}</h3>
+                            <h3>{movie.title ? movie.title : movie.name
+
+                            }</h3>
                         </div>
                         <div className="film-date-wrapper">
-                            <p>{movie.release_date ? movie.release_date.substring(0, 4) : '-'}</p>
+                            <p>{
+                                FilmDate()
+                            }</p>
                         </div>
                     </div>
                 </article>

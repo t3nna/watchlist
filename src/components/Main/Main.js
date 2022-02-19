@@ -7,8 +7,10 @@ import FilmResult from "../ContainerWatchlist/FilmResult/FilmResult";
 import Watchlist from "../ContainerWatchlist/Watchlist/Watchlist";
 import Search from "../ContainerWatchlist/Search/Search";
 import Watched from "../ContainerWatchlist/Watched/Watched";
-import About from "../ContainerWatchlist/About/About";
+import About from "../About/About";
 import FilmDesc from "../ContainerWatchlist/FilmDesc/FilmDesc";
+import Registr from "../Auth/Registr";
+import Profile from "../Auth/Profile";
 
 
 export default function Main() {
@@ -30,16 +32,20 @@ export default function Main() {
                 <Route path={'/add'} exact>
                         <Navbar/>
                         <Search/>
+                    {/*<Profile/>*/}
                     </Route>
                 <Route path={'/about'} exact>
                         <Navbar/>
                         <About/>
                     </Route>
 
-                    <Route path={'/film-desc'}>
+                    <Route path={'/film-desc'} exact>
                         <Navbar/>
                         <FilmDesc/>
 
+                    </Route>
+                    <Route path={'/register'} exact>
+                        <Registr/>
                     </Route>
                 </Switch>
             </Router>

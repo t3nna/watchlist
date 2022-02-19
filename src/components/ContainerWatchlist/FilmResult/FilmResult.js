@@ -4,7 +4,17 @@ import './FilmResult.css'
 import {FilmContext} from "../../../context/GlobalState";
 
 export default function FilmResult({movie, mediaType}) {
-    const {watched, watchlist, addFilmToWatchlist, addFilmToWatched, toggleWatchlistToWatched, toggleWatchedToWatchlist} = useContext(FilmContext)
+    const {
+        watched,
+        watchlist,
+        addFilmToWatchlist,
+        addFilmToWatched,
+        toggleWatchlistToWatched,
+        toggleWatchedToWatchlist,
+        currentUser
+    } = useContext(FilmContext)
+
+    // console.log(currentUser.uid)
 
     let storedFilmWatchlist = watchlist.find(item => item.id === movie.id)
     let storedFilmWatched = watched.find(item => item.id === movie.id)
@@ -12,26 +22,29 @@ export default function FilmResult({movie, mediaType}) {
     const watchlistDisabled = storedFilmWatchlist ? true : false
     const watchedDisabled = storedFilmWatched ? true : false
 
-    movie.mediaType = mediaType
+    if (mediaType) {
+        movie.mediaType = mediaType
+
+    }
 
     // film only in one state
-    const toggleWatchlist = (movie) =>{
-        if (!storedFilmWatchlist){
-        addFilmToWatched(movie)
+    const toggleWatchlist = (movie) => {
+        if (!storedFilmWatchlist) {
+            addFilmToWatched(movie)
         }
 
-        if (storedFilmWatchlist){
-            if (storedFilmWatchlist.id === movie.id){
+        if (storedFilmWatchlist) {
+            if (storedFilmWatchlist.id === movie.id) {
                 toggleWatchlistToWatched(movie)
             }
         }
     }
-const toggleWatched = (movie) =>{
-        if(!storedFilmWatched){
-        addFilmToWatchlist(movie)
+    const toggleWatched = (movie) => {
+        if (!storedFilmWatched) {
+            addFilmToWatchlist(movie)
         }
-        if (storedFilmWatched){
-            if (storedFilmWatched.id === movie.id){
+        if (storedFilmWatched) {
+            if (storedFilmWatched.id === movie.id) {
                 toggleWatchedToWatchlist(movie)
             }
         }
@@ -41,11 +54,11 @@ const toggleWatched = (movie) =>{
     const [description, setDescription] = useState(false)
 
     // find date in req
-    const FilmDate =() =>{
-        if (movie.release_date){
+    const FilmDate = () => {
+        if (movie.release_date) {
             return movie.release_date.substring(0, 4)
         }
-        if (movie.first_air_date){
+        if (movie.first_air_date) {
             return movie.first_air_date.substring(0, 4)
         }
         return '-'
@@ -57,16 +70,20 @@ const toggleWatched = (movie) =>{
                 <div className="film-img-wrapper">
                     {
                         movie.poster_path ? (<img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                                                  alt="smth" className="film-img" onClick={() => setDescription(!description)}/>
+                                                  alt="smth" className="film-img"
+                                                  onClick={() => setDescription(!description)}/>
                         ) : (
                             <img src={img} alt="no Poster" onClick={() => setDescription(!description)}/>
                         )
                     }
-                    <div className={description ? 'film-description-container film-description-open' : 'film-description-container'}
-                         onClick={() => setDescription(!description)} >
-                        {movie.overview.length>550 ?
-                            ( <h5 className="film-description" style={{fontSize: '.95rem'}} onClick={() => setDescription(!description)}>{movie.overview}</h5>) :
-                            ( <h5 className="film-description" onClick={() => setDescription(!description)}>{movie.overview}</h5>)
+                    <div
+                        className={description ? 'film-description-container film-description-open' : 'film-description-container'}
+                        onClick={() => setDescription(!description)}>
+                        {movie.overview.length > 550 ?
+                            (<h5 className="film-description" style={{fontSize: '.95rem'}}
+                                 onClick={() => setDescription(!description)}>{movie.overview}</h5>) :
+                            (<h5 className="film-description"
+                                 onClick={() => setDescription(!description)}>{movie.overview}</h5>)
                         }
 
                     </div>
@@ -74,7 +91,7 @@ const toggleWatched = (movie) =>{
                 <div className="film-buttons-container">
                     <button className={'film-btn'} onClick={() => toggleWatched(movie)}
                             disabled={watchlistDisabled}
-                            style={watchlistDisabled? {backgroundColor: 'coral'} : {}}>
+                            style={watchlistDisabled ? {backgroundColor: 'coral'} : {}}>
                         Add to Watchlist
                     </button>
 
@@ -82,13 +99,13 @@ const toggleWatched = (movie) =>{
                     <button className={'film-btn'}
                             onClick={() => toggleWatchlist(movie)}
                             disabled={watchedDisabled}
-                            style={watchedDisabled? {backgroundColor: 'coral'} : {}}>
+                            style={watchedDisabled ? {backgroundColor: 'coral'} : {}}>
                         Add to Watched
                     </button>
                 </div>
                 <div className="film-text-container">
                     <div className="film-header-wrapper">
-                        <h3>{movie.title ? movie.title: movie.name
+                        <h3>{movie.title ? movie.title : movie.name
 
                         }</h3>
                     </div>

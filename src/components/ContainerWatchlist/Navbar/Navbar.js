@@ -1,14 +1,29 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import {Link} from "react-router-dom";
 import './Navbar.css'
+import SignIn from "../../Auth/SignIn";
+import {FilmContext} from "../../../context/GlobalState";
 
 export default function Navbar() {
     const [nav, setNav] = useState(false)
+    const [open, setOpen] = useState(false)
+    const {currentUser, logout} = useContext(FilmContext)
+    const handleLogout = () => {
+        logout()
+    }
+
+
     let pathname = window.location.pathname
+
+    // change background
+    document.body.classList.add('background-not-white');
 
     return (
         <header className={'header'}>
-            <div id="mobile-nav" style={nav ? {height: "192px"} : {height: '0'}}>
+            {
+                <SignIn authOpen={open} setAuthOpen={setOpen}/>
+            }
+            <div id="mobile-nav" style={nav ? {height: "240px"} : {height: '0'}}>
                 <div className="nav-wrapper">
                     <nav className="header-nav-mobile">
                         <ul>
@@ -28,6 +43,20 @@ export default function Navbar() {
                                 <Link to={'/about'} onClick={() => setNav(!nav)}
                                       style={pathname === '/about' ? {color: 'gray'} : {color: ' rgba(156,156,156,.7)'}}>About</Link>
                             </li>
+                            <li>
+                                <a className={'auth-header'} onClick={() => {
+                                    if (!currentUser){
+                                        setOpen(!open)
+                                    }
+                                    handleLogout()
+                                }}
+                                   style={currentUser ? {color: '#8e83c1'} : {}}
+                                >
+                                    {currentUser ? 'Logout' : 'Login'}
+
+                                </a>
+                            </li>
+
                         </ul>
                     </nav>
                 </div>
@@ -58,6 +87,19 @@ export default function Navbar() {
                         <li>
                             <Link to={'/about'}
                                   style={pathname === '/about' ? {color: ' rgba(156,156,156,.7)'} : {color: 'black'}}>About</Link>
+                        </li>
+                        <li>
+                            <a className={'auth-header'} onClick={() => {
+                                if (!currentUser){
+                                setOpen(!open)
+                                }
+                                handleLogout()
+                            }}
+                               style={currentUser ? {color: '#8e83c1'} : {}}
+                            >
+                                {currentUser ? 'Logout' : 'Login'}
+
+                            </a>
                         </li>
                     </ul>
                 </nav>

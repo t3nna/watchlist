@@ -18,7 +18,7 @@ export default function Watchlist() {
                 watchlist.length > 0 ?
                     (<div className={'grid'}>{watchlist.map(movie => (<FilmCard movie={movie} key={movie.id} type={'watchlist'}/>))}
                     </div>) :
-                    <h2 className={'no-movies'}>There are no film in your collection</h2>
+                    <h2 className={'no-movies'}>There are no films in your collection</h2>
 
             }
         </>
