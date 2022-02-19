@@ -31,6 +31,16 @@ export default function SignIn({setAuthOpen, authOpen}) {
 
     }
 
+    // disable scrolling
+    if(authOpen){
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${window.scrollY}px`;
+    }
+
+    if (!authOpen){
+        document.body.style.position = '';
+        document.body.style.top = '';
+    }
     return (
         <div className={(authOpen) ? "menu menu-shown" : "menu"}>
             <div className="menu-head">
